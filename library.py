@@ -37,7 +37,7 @@ def print_list(list):
 
 # find in a list: needs a list, and a term to find, returns t/f
 def found_in_list(list,prompt):
-    """Take a list, prompt for input, check if it appears in the list, return what was entered if it was found, otherwise return None"""
+    """Take a list, prompt for input, check if it appears in the list, return what was the query and boolean representing if it was found"""
     query = raw_input(prompt)
     query = query.strip()
     query = query.title()
@@ -85,7 +85,7 @@ def get_command():
 def library():
     """This is our main function wooo :) """
 
-    books = ["Harry Potter", "The Secret", "The Secret Garden", "Snow Crash", "Good Omens"]
+    books = ["Harry Potter", "The Secret Garden", "Snow Crash", "Good Omens"]
 
     print "This is my library!"
     print "-------ASCII Art woo ----------"
