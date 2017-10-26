@@ -14,7 +14,8 @@
 
 
 def add_book(books):
-    # """Add a new book and return the title"""
+    # """Take input, Check if we have it already. If yes, print an error. If no, add the new book and return the updated list"""
+#
 #    book = raw_input("Title > ")
 #    book = book.title()
     prompt = "Title > "
@@ -29,15 +30,15 @@ def add_book(books):
 # print add_book([])
 
 def print_list(list):
-    """Takes a list, iterate over the list and show contents"""
+    """Takes a list, iterates over it to show contents"""
     for item in list:
         print item
 
 #print print_list(["book A", "book B"])
 
-# find in a list: needs a list, and a term to find, returns t/f
+# find in a list: needs a list, and a term to find, returns query and t/f
 def found_in_list(list,prompt):
-    """Take a list, prompt for input, check if it appears in the list, return what was the query and boolean representing if it was found"""
+    """Take a list, prompt for input, check if it appears in the list, return the query and boolean representing if it was found"""
     query = raw_input(prompt)
     query = query.strip()
     query = query.title()
@@ -49,11 +50,12 @@ def found_in_list(list,prompt):
 
 # partial find in a list: take user input, load a list item into a string, check input against string, return the string if found, if not, load next list item and check again.
 def find_partial(list):  # returns string and bool
-    """Take a list, get use query, compare query to each list item. Returns the query string and a bool"""
+    """Take a list, prompt for query, compare query to each list item. Returns the query string and a bool representing if it was found"""
     query = raw_input("Search for this word > ")
     query = query.title()
     query = query.strip()
-    # i = 0
+    # my original C++ style way to do this
+    #i = 0
     # while i <= len(list):
     #     list_item = list[i]
     #     if query in list_item:
@@ -61,6 +63,8 @@ def find_partial(list):  # returns string and bool
     #     else:
     #         i = i + 1
     # return query, False
+    #
+    # voodoo memory python-y version
     found = False
     for item in list:
         if query in item:
@@ -72,7 +76,7 @@ def find_partial(list):  # returns string and bool
 
 def get_command():
     """Show menu. Prompt user for a command, returns the command"""
-    print "You can enter Add, view, check, search, or exit."
+    print "You can enter: add, view, check, search, or exit."
     command = raw_input("Enter a command > ")
     command = command.lower()
     command = command.strip()
@@ -93,7 +97,7 @@ def library():
     while True:
 
         command = get_command()
-        print "Action:", command
+        print "You typed:", command
 
         if command == "exit":
             print "Bye now!"
@@ -113,6 +117,7 @@ def library():
         elif command == "search":
             print "Look for a partial match to a title"
             find_partial(books)
+            #moving this to the function
             #query, found, match_item = find_partial(books)
             # if found == True:
             #     print query, "matches", match_item, "in the library."
@@ -126,7 +131,7 @@ def library():
             if result == False:
                 print "We didn't find that title."
             else:
-                print "We found", book_to_find, "in the library."
+                print "We have", book_to_find, "in the library."
 
         else:
             print "I'm sorry, I didn't understand that. Try again?"
